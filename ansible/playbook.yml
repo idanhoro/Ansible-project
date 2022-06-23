@@ -1,0 +1,70 @@
+---
+- name: Application servers setup
+  become: true
+  hosts: all
+
+  tasks:
+    - name: "Update OS"
+      apt:
+        upgrade: "True"
+        update_cache: True
+
+
+    - name: "Git clone repository"
+      ansible.builtin.git:
+        repo: "{{ git_repo_url }}"
+        dest: "/home/{{ VM_username }}/{{ App_folder }}"
+        clone: yes
+        update: yes
+        force: yes
+
+    - name: Copy .env file to the machine.
+      ansible.builtin.copy:
+        src: "/home/{{ VM_username }}/{{ Controller_folder }}/{{ env_level }}-env/.env"
+        dest: /home/{{ VM_username }}/{{ App_folder }}/
+        owner: "{{ VM_username }}"
+        group: "{{ VM_username }}"
+        mode: "0644"
+
+    - name: install node version 14
+      shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - && sudo apt-get install -y nodejs
+      args:
+        warn: false
+
+    - name: Update packages based on package.json to their latest version.
+      become: true
+      npm:
+        path: "/home/{{ VM_username }}/{{ App_folder }}"
+        state: latest
+
+    - name: Install Npm pm2 Module
+      npm:
+        name: pm2
+        state: present
+        global: yes
+
+    - name: Delete app, if exists
+      become_user: "{{ VM_username }}"
+      shell: pm2 delete all
+      ignore_errors: true
+
+    - name: Run pm2 startup
+      shell: pm2 start npm -- run dev && pm2 save && pm2 startup
+      args:
+        chdir: "/home/{{ VM_username }}/bootcamp-app"
+        executable: /bin/bash
+
+    - name: Run pm2 settings
+      become: true
+      shell: "env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u {{ VM_username }} --hp /home/{{ VM_username }}"
+      args:
+        executable: /bin/bash
+
+    - name: Database init
+      shell: npm run initdb
+      args:
+        chdir: "/home/{{ VM_username }}/bootcamp-app"
+
+    - name: Reboot wep servers
+      reboot:
+
