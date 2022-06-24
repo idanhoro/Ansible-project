@@ -5,8 +5,7 @@ module "environment_settings" {
 
   admin_password                = var.admin_password
   admin_user                    = var.admin_user
-  allowed_ip_address1            = var.allowed_ip_address1
-  allowed_ip_address2            = var.allowed_ip_address2
+  allowed_ip_address           = var.allowed_ip_address
   instance_count                = var.instance_count
   postgres_password             = var.postgres_password
   postgres_sku_model            = var.postgres_sku_model

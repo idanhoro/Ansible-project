@@ -66,4 +66,4 @@ Run the follow commands:
 2) ```terraform init```
 3) ```terraform apply```
 4) ``` cd Ansible-project\ansible```
-5) ```ansible-playbook -i Inventory playbook.yml``` (Inventory file required)
+5) ```ansible-playbook -i Inventory playbook.yml``` (Inventory+.env files required)

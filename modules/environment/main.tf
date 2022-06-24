@@ -51,7 +51,7 @@ resource "azurerm_network_security_group" "nsg_public_subnet" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = var.allowed_ip_address2
+    source_address_prefix      = var.allowed_ip_address
     destination_address_prefix = "*"
   }
 

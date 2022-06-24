@@ -29,14 +29,11 @@ variable "web_app_name" {
   description = "The web appliction name"
 }
 
-variable "allowed_ip_address1" {
+variable "allowed_ip_address" {
   type        = string
   description = "The ip/s are allowed to connect with ssh to the web application servers"
 }
-variable "allowed_ip_address2" {
-  type        = string
-  description = "The ip/s are allowed to connect with ssh to the web application servers"
-}
+
 variable "public_key" {
   type        = string
   description = "The public key used to encrypt and decrypt messages in network"
