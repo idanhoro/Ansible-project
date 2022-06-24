@@ -1,4 +1,4 @@
-# ANSIBLE PROJECT FILE
+# ANSIBLE PROJECT
 
 <img src="./images/ansible.gif" width="500"/>
 
