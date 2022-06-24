@@ -1,4 +1,4 @@
-# ANSIBLE PROJECT FILE
+# ANSIBLE PROJECT
 
 <img src="./images/ansible.gif" width="500"/>
 
@@ -27,7 +27,7 @@ In addition, we are ready to move to production. To achieve this we will need to
 - [Terraform template](https://github.com/idanhoro/Terraform-project)
 - Virtual Machine that will be the Ansible Controller.
 - Free Okta developer account for account registration, login
-- .env file for each environment. (Example at ansible\env_production\.env_example)
+- .env file for each environment. (Example at ansible\env_production\Example_env)
 - Inventory file configure, [INI STYLE](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ini_inventory.html) Example:
 ```yaml
 [production]
