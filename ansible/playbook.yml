@@ -4,7 +4,7 @@
   hosts: all
 
   tasks:
-    - name: "Update OS"
+    - name: "Upgrade OS"
       apt:
         upgrade: "True"
         update_cache: True
