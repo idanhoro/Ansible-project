@@ -152,7 +152,7 @@ terraform.rc
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,terraform
 
 
-/ansible/env_prodction
+/ansible/env_prodction/.env
 /ansible/env_staging
 /ansible/inventory
 /.idea

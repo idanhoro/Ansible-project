@@ -1,0 +1,18 @@
+ # Host configuration
+  PORT=8080
+  HOST="HOST-IP"
+  NODE_ENV=development
+  HOST_URL=http:/"HOST-IP":8080
+  COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+
+  # Okta configuration
+  OKTA_ORG_URL="https://"OKTA_DOMAIN_URL".okta.com"
+  OKTA_CLIENT_ID="CLIENT-ID-PASSWORD"
+  OKTA_CLIENT_SECRET="Your-WEB-APP-INTEGRATION-SECRET"
+
+  # Postgres configuration
+  PGHOST="POSTGRESS-HOST-IP"
+  PGUSERNAME="POSTGRESS USER"
+  PGDATABASE="POSTGRESS DB"
+  PGPASSWORD="POSTGRESS PASSWORD"
+  PGPORT=5432
